@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayHub Pro - Premium Gaming Collection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --primary-light: #a78bfa;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f97316;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --light: #f1f5f9;
+            --border: #334155;
+            --text: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #16213e 100%);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+            padding: 20px 0;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.08);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-button {
+            padding: 10px 24px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background: rgba(124, 58, 237, 0.3);
+            border-color: rgba(124, 58, 237, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-button.active {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-color: #7c3aed;
+        }
+
+        /* ===== HOME PAGE ===== */
+        .page {
+            display: none;
+            animation: pageIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 80px;
+            animation: slideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 16px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        /* ===== GAMES GRID ===== */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .game-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: cardIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-card:nth-child(1) { animation-delay: 0.1s; }
+        .game-card:nth-child(2) { animation-delay: 0.2s; }
+        .game-card:nth-child(3) { animation-delay: 0.3s; }
+        .game-card:nth-child(4) { animation-delay: 0.4s; }
+        .game-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .game-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(124, 58, 237, 0.5);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .game-icon {
+            font-size: 80px;
+            padding: 40px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.2));
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .game-card.memory .game-icon {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(139, 92, 246, 0.2));
+        }
+
+        .game-card.word .game-icon {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
+        }
+
+        .game-card.puzzle .game-icon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(34, 197, 239, 0.2));
+        }
+
+        .game-card.quiz .game-icon {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 146, 60, 0.2));
+        }
+
+        .game-card.builder .game-icon {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(34, 197, 239, 0.2));
+        }
+
+        .game-info {
+            padding: 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .game-description {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .play-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .play-button:active {
+            transform: translateY(0);
+        }
+
+        /* ===== GAME SECTIONS ===== */
+        .game-container {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: containerIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes containerIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .game-header h2 {
+            font-size: 40px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .close-button {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-button:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.6);
+            transform: translateX(-4px);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: rgba(124, 58, 237, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            color: #a78bfa;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ===== MEMORY GAME ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 14px;
+        }
+
+        .card.flip {
+            transform: rotateY(180deg);
+        }
+
+        .card.matched {
+            pointer-events: none;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            backface-visibility: hidden;
+            font-weight: 700;
+        }
+
+        .front {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(139, 92, 246, 0.3));
+            border: 2px solid rgba(124, 58, 237, 0.5);
+            color: #a78bfa;
+            font-size: 24px;
+        }
+
+        .back {
+            background: rgba(30, 41, 59, 0.9);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            transform: rotateY(180deg);
+            color: var(--text);
+        }
+
+        .card.matched .back {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #10b981;
+            animation: matchPulse 0.6s ease;
+        }
+
+        @keyframes matchPulse {
+            0%, 100% { transform: rotateY(180deg) scale(1); }
+            50% { transform: rotateY(180deg) scale(1.05); }
+        }
+
+        /* ===== WORD SEARCH ===== */
+        .word-search-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+            margin: 32px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cell {
+            aspect-ratio: 1;
+            background: rgba(124, 58, 237, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 8px;
+            user-select: none;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .cell:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: rgba(124, 58, 237, 0.5);
+        }
+
+        .cell.selected {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            border-color: #7c3aed;
+            color: white;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+
+        .cell.found {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-color: #10b981;
+            color: white;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .word-list {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 32px 0;
+        }
+
+        .word-tag {
+            padding: 12px 20px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .word-tag:hover {
+            border-color: rgba(124, 58, 237, 0.6);
+            background: rgba(124, 58, 237, 0.2);
+        }
+
+        .word-tag.done {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(5, 150, 105, 0.3));
+            border-color: #10b981;
+            color: #86efac;
+            text-decoration: line-through;
+            animation: tagComplete 0.4s ease;
+        }
+
+        @keyframes tagComplete {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== PUZZLE ===== */
+        .puzzle-board {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+            max-width: 500px;
+            margin: 32px auto;
+        }
+
+        .tile {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(139, 92, 246, 0.3));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: #a78bfa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(124, 58, 237, 0.5);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .tile:hover:not(.empty) {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .tile.empty {
+            background: rgba(30, 41, 59, 0.5);
+            color: transparent;
+            cursor: default;
+            border-color: rgba(124, 58, 237, 0.2);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .tile.empty:hover {
+            transform: none;
+        }
+
+        /* ===== QUIZ ===== */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timer-display {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fca5a5;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 14px;
+            text-align: center;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            font-family: 'Poppins', sans-serif;
+            animation: timerPulse 1s infinite;
+        }
+
+        @keyframes timerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .question-display {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 14px;
+            border-left: 4px solid #7c3aed;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(148, 163, 184, 0.2);
+            border-radius: 10px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7c3aed, #ec4899);
+            transition: width 0.4s ease;
+        }
+
+        .answer-options {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .option-button {
+            padding: 18px 20px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-button::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(180deg, #7c3aed, #ec4899);
+            transform: scaleY(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
+        .option-button:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: rgba(124, 58, 237, 0.6);
+            transform: translateX(4px);
+        }
+
+        .option-button.selected {
+            background: rgba(124, 58, 237, 0.3);
+            border-color: #7c3aed;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .option-button.correct {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: #10b981;
+            color: #86efac;
+        }
+
+        .option-button.incorrect {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        .option-button:disabled {
+            cursor: not-allowed;
+        }
+
+        .quiz-result {
+            padding: 40px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 32px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            animation: resultIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes resultIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .quiz-result h3 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .result-stat {
+            background: rgba(30, 41, 59, 0.5);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .result-stat-label {
+            font-size: 12px;
+            opacity: 0.6;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .result-stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ===== BUILDER ===== */
+        .builder-section {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 28px;
+            border-radius: 14px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(30, 41, 59, 0.5);
+            color: var(--text);
+            backdrop-filter: blur(10px);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #7c3aed;
+            background: rgba(124, 58, 237, 0.1);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .question-item {
+            padding: 16px;
+            background: rgba(30, 41, 59, 0.5);
+            border-left: 4px solid #7c3aed;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .question-item-text {
+            flex: 1;
+        }
+
+        .question-item-number {
+            font-weight: 800;
+            color: #a78bfa;
+            margin-right: 12px;
+            font-size: 14px;
+        }
+
+        .remove-btn {
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: rgba(239, 68, 68, 0.6);
+        }
+
+        /* ===== BUTTONS ===== */
+        .button {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .button.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .button.primary:active {
+            transform: translateY(0);
+        }
+
+        .button.secondary {
+            background: rgba(124, 58, 237, 0.1);
+            color: #a78bfa;
+            border: 2px solid rgba(124, 58, 237, 0.5);
+        }
+
+        .button.secondary:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: #7c3aed;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== TOAST NOTIFICATIONS ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 20px 28px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.2);
+            border: 2px solid #10b981;
+            color: #86efac;
+            font-weight: 600;
+            animation: toastSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2000;
+        }
+
+        @keyframes toastSlide {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .word-search-grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+
+            .puzzle-board {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .game-container {
+                padding: 24px;
+            }
+
+            .game-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .close-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-buttons {
+                width: 100%;
+            }
+
+            .nav-button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo" onclick="goHome()">🎮 PlayHub Pro</div>
+            <div class="nav-buttons">
+                <button class="nav-button active" onclick="goHome()">Home</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>🎮 PlayHub Pro</h1>
+                <p>Master a collection of premium gaming experiences designed for maximum entertainment and skill development</p>
+            </div>
+
+            <div class="games-grid">
+                <!-- Memory Game -->
+                <div class="game-card memory" onclick="startGame('memory')">
+                    <div class="game-icon">🧠</div>
+                    <div class="game-info">
+                        <div class="game-title">Memory Master</div>
+                        <div class="game-description">Test your cognitive abilities by matching fruit pairs. Beat your personal best and train your memory!</div>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+
+                <!-- Word Search -->
+                <div class="game-card word" onclick="startGame('word')">
+                    <div class="game-icon">🔍</div>
+                    <div class="game-info">
+                        <div class="game-title">Word Seeker</div>
+                        <div class="game-description">Hunt for hidden words in the grid under time pressure. Rack up points and unlock high scores!</div>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+
+                <!-- Sliding Puzzle -->
+                <div class="game-card puzzle" onclick="startGame('puzzle')">
+                    <div class="game-icon">🧩</div>
+                    <div class="game-info">
+                        <div class="game-title">Puzzle Solver</div>
+                        <div class="game-description">Solve the challenging 6x6 sliding puzzle. Minimize moves and time for the ultimate challenge!</div>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+
+                <!-- Quiz -->
+                <div class="game-card quiz" onclick="startGame('quiz')">
+                    <div class="game-icon">❓</div>
+                    <div class="game-info">
+                        <div class="game-title">Quiz Champion</div>
+                        <div class="game-description">Answer diverse trivia questions in various categories. Beat the timer and showcase your knowledge!</div>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+
+                <!-- Quiz Builder -->
+                <div class="game-card builder" onclick="startGame('builder')">
+                    <div class="game-icon">🛠️</div>
+                    <div class="game-info">
+                        <div class="game-title">Quiz Creator</div>
+                        <div class="game-description">Build custom quizzes with your own questions. Challenge yourself with personalized learning experiences!</div>
+                        <button class="play-button">Play Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEMORY GAME -->
+        <div id="memory-game" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🧠 Memory Master</h2>
+                    <button class="close-button" onclick="goHome()">← Back to Home</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">⏱️ Time</div>
+                        <div class="stat-value" id="memory-timer">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">🏆 Best Time</div>
+                        <div class="stat-value" id="memory-best">--</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">✨ Matches</div>
+                        <div class="stat-value" id="memory-matches">0</div>
+                    </div>
+                </div>
+
+                <div class="grid" id="memory-grid"></div>
+
+                <div class="button-group">
+                    <button class="button primary" onclick="memoryRestart()">🔄 Restart Game</button>
+                </div>
+
+                <div class="toast" id="memory-message" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- WORD SEARCH GAME -->
+        <div id="word-game" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🔍 Word Seeker</h2>
+                    <button class="close-button" onclick="goHome()">← Back to Home</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">⏱️ Time Left</div>
+                        <div class="stat-value" id="word-timer">300</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">⭐ Score</div>
+                        <div class="stat-value" id="word-score">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">🏆 High Score</div>
+                        <div class="stat-value" id="word-highscore">0</div>
+                    </div>
+                </div>
+
+                <div class="word-search-grid" id="word-grid"></div>
+                <div class="word-list" id="word-list"></div>
+
+                <div class="button-group">
+                    <button class="button primary" onclick="wordRestart()">🔄 New Game</button>
+                </div>
+
+                <div class="toast" id="word-message" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- PUZZLE GAME -->
+        <div id="puzzle-game" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🧩 Puzzle Solver</h2>
+                    <button class="close-button" onclick="goHome()">← Back to Home</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-label">🎯 Moves</div>
+                        <div class="stat-value" id="puzzle-moves">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">⏱️ Time</div>
+                        <div class="stat-value" id="puzzle-time">0</div>
+                    </div>
+                </div>
+
+                <div class="puzzle-board" id="puzzle-board"></div>
+
+                <div class="button-group">
+                    <button class="button primary" onclick="puzzleNewGame()">🔄 New Game</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ GAME -->
+        <div id="quiz-game" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>❓ Quiz Champion</h2>
+                    <button class="close-button" onclick="goHome()">← Back to Home</button>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="timer-display" id="quiz-timer-display">Time: <span id="quiz-timer">15</span>s</div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quiz-progress" style="width: 0%;"></div>
+                    </div>
+
+                    <div class="question-display" id="quiz-question">Question</div>
+                    <div class="answer-options" id="quiz-options"></div>
+                    
+                    <div class="button-group">
+                        <button id="quiz-next" class="button primary" onclick="quizNext()" style="display: none;">Next Question</button>
+                    </div>
+                    
+                    <div id="quiz-result" class="quiz-result" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ BUILDER -->
+        <div id="builder-game" class="page">
+            <div class="game-container">
+                <div class="game-header">
+                    <h2>🛠️ Quiz Creator</h2>
+                    <button class="close-button" onclick="goHome()">← Back to Home</button>
+                </div>
+
+                <div class="builder-section">
+                    <div class="form-group">
+                        <label>⏱️ Time Per Question (seconds):</label>
+                        <input type="number" id="builder-timer" value="10" min="1" max="60">
+                    </div>
+
+                    <div class="form-group">
+                        <label>❓ Question:</label>
+                        <input type="text" id="builder-question" placeholder="Enter your question here...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>✅ Answer:</label>
+                        <input type="text" id="builder-answer" placeholder="Enter the correct answer...">
+                    </div>
+
+                    <button class="button primary" onclick="builderAddQuestion()">➕ Add Question</button>
+                </div>
+
+                <div id="builder-list"></div>
+
+                <div class="button-group">
+                    <button class="button primary" onclick="builderStart()">▶️ Start Quiz</button>
+                </div>
+
+                <div id="builder-play" style="display: none;">
+                    <div style="background: rgba(124, 58, 237, 0.1); padding: 28px; border-radius: 14px; margin-top: 28px; border: 1px solid rgba(124, 58, 237, 0.3);">
+                        <div class="stat-card" style="background: transparent; border: none; padding: 0 0 20px 0; margin-bottom: 20px;">
+                            <div class="stat-label">Question Progress</div>
+                            <div class="stat-value"><span id="builder-progress">1</span>/<span id="builder-total">0</span></div>
+                        </div>
+                        
+                        <div style="font-size: 20px; font-weight: 600; margin-bottom: 20px; padding: 16px; background: rgba(30, 41, 59, 0.5); border-radius: 10px; border-left: 4px solid #7c3aed;" id="builder-ques">Question</div>
+                        
+                        <input type="text" id="builder-ans" placeholder="Type your answer here..." style="width: 100%; padding: 14px 16px; border: 2px solid rgba(124, 58, 237, 0.3); border-radius: 10px; margin-bottom: 16px; font-size: 14px; background: rgba(30, 41, 59, 0.5); color: var(--text);">
+                        
+                        <button class="button primary" onclick="builderSubmitAnswer()" style="width: 100%;">Submit Answer</button>
+                    </div>
+                </div>
+
+                <div id="builder-result" style="margin-top: 28px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== NAVIGATION =====
+        function goHome() {
+            document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+            document.getElementById('home').classList.add('active');
+        }
+
+        function startGame(game) {
+            document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+            document.getElementById(game + '-game').classList.add('active');
+
+            if (game === 'memory') memoryStart();
+            else if (game === 'word') wordStart();
+            else if (game === 'puzzle') puzzleNewGame();
+            else if (game === 'quiz') quizStart();
+            else if (game === 'builder') builderInit();
+        }
+
+        // ===== MEMORY GAME =====
+        const emojis = ['🍎', '🍌', '🍇', '🍓', '🍉', '🍒', '🥝', '🍍'];
+        let memoryCards = [...emojis, ...emojis];
+        let memoryFirst = null, memorySecond = null, memoryLock = false, memoryMatched = 0;
+        let memoryTime = 0, memoryInterval, memoryStarted = false;
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function memoryStart() {
+            shuffle(memoryCards);
+            memoryFirst = null;
+            memorySecond = null;
+            memoryLock = false;
+            memoryMatched = 0;
+            memoryTime = 0;
+            memoryStarted = false;
+            document.getElementById('memory-message').style.display = 'none';
+            document.getElementById('memory-matches').textContent = '0';
+            const grid = document.getElementById('memory-grid');
+            grid.innerHTML = '';
+
+            memoryCards.forEach((emoji, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `<div class="front">?</div><div class="back">${emoji}</div>`;
+                card.dataset.emoji = emoji;
+                card.dataset.index = index;
+                card.onclick = () => memoryFlip(card);
+                grid.appendChild(card);
+            });
+
+            clearInterval(memoryInterval);
+            document.getElementById('memory-timer').textContent = '0';
+        }
+
+        function memoryFlip(card) {
+            if (!memoryStarted) {
+                memoryStarted = true;
+                memoryInterval = setInterval(() => {
+                    memoryTime++;
+                    document.getElementById('memory-timer').textContent = memoryTime;
+                }, 1000);
+            }
+
+            if (memoryLock || card === memoryFirst || card.classList.contains('matched')) return;
+            card.classList.add('flip');
+
+            if (!memoryFirst) {
+                memoryFirst = card;
+                return;
+            }
+
+            memorySecond = card;
+            memoryLock = true;
+
+            if (memoryFirst.dataset.emoji === memorySecond.dataset.emoji) {
+                memoryFirst.classList.add('matched');
+                memorySecond.classList.add('matched');
+                memoryMatched++;
+                document.getElementById('memory-matches').textContent = memoryMatched;
+                memoryFirst = null;
+                memorySecond = null;
+                memoryLock = false;
+
+                if (memoryMatched === 8) {
+                    clearInterval(memoryInterval);
+                    const best = localStorage.getItem('memoryBest');
+                    if (!best || memoryTime < best) {
+                        localStorage.setItem('memoryBest', memoryTime);
+                    }
+                    document.getElementById('memory-best').textContent = localStorage.getItem('memoryBest');
+                    showToast(`🎉 Perfect! Completed in ${memoryTime}s!`);
+                }
+            } else {
+                setTimeout(() => {
+                    memoryFirst.classList.remove('flip');
+                    memorySecond.classList.remove('flip');
+                    memoryFirst = null;
+                    memorySecond = null;
+                    memoryLock = false;
+                }, 900);
+            }
+        }
+
+        function memoryRestart() {
+            memoryStart();
+        }
+
+        const memoryBest = localStorage.getItem('memoryBest');
+        if (memoryBest) document.getElementById('memory-best').textContent = memoryBest;
+
+        // ===== WORD SEARCH GAME =====
+        const WORD_BANK = ['APPLE', 'CODE', 'GAME', 'HTML', 'JAVA', 'PYTHON', 'MOUSE', 'KEYBOARD', 'SCREEN', 'ROBOT', 'SPACE', 'EARTH', 'RIVER', 'MOUNTAIN', 'FLOWER', 'ORANGE', 'BANANA', 'GRAPE', 'LION', 'TIGER', 'ZEBRA', 'OCEAN', 'FOREST', 'CRICKET', 'FOOTBALL', 'SCIENCE', 'MATH', 'HISTORY', 'COMPUTER', 'GARDEN'];
+        let wordBoard = [], wordWords = [], wordSelecting = false, wordSelected = [], wordScore = 0, wordTimer = 300, wordInterval;
+
+        function chooseRandomWords() {
+            const copy = [...WORD_BANK].sort(() => Math.random() - 0.5);
+            wordWords = copy.slice(0, 5);
+        }
+
+        function emptyBoard() {
+            wordBoard = [];
+            for (let r = 0; r < 10; r++) {
+                wordBoard[r] = [];
+                for (let c = 0; c < 10; c++) {
+                    wordBoard[r][c] = '';
+                }
+            }
+        }
+
+        function placeWord(word) {
+            let placed = false;
+            while (!placed) {
+                let dir = Math.floor(Math.random() * 2);
+                if (dir === 0) {
+                    let row = Math.floor(Math.random() * 10);
+                    let col = Math.floor(Math.random() * (10 - word.length));
+                    let ok = true;
+                    for (let i = 0; i < word.length; i++) {
+                        if (wordBoard[row][col + i] !== '' && wordBoard[row][col + i] !== word[i]) ok = false;
+                    }
+                    if (ok) {
+                        for (let i = 0; i < word.length; i++) {
+                            wordBoard[row][col + i] = word[i];
+                        }
+                        placed = true;
+                    }
+                } else {
+                    let row = Math.floor(Math.random() * (10 - word.length));
+                    let col = Math.floor(Math.random() * 10);
+                    let ok = true;
+                    for (let i = 0; i < word.length; i++) {
+                        if (wordBoard[row + i][col] !== '' && wordBoard[row + i][col] !== word[i]) ok = false;
+                    }
+                    if (ok) {
+                        for (let i = 0; i < word.length; i++) {
+                            wordBoard[row + i][col] = word[i];
+                        }
+                        placed = true;
+                    }
+                }
+            }
+        }
+
+        function fillLetters() {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                    if (wordBoard[r][c] === '') {
+                        wordBoard[r][c] = alphabet[Math.floor(Math.random() * 26)];
+                    }
+                }
+            }
+        }
+
+        function wordDraw() {
+            const grid = document.getElementById('word-grid');
+            grid.innerHTML = '';
+            for (let r = 0; r < 10; r++) {
+                for (let c = 0; c < 10; c++) {
+                    let d = document.createElement('div');
+                    d.className = 'cell';
+                    d.innerHTML = wordBoard[r][c];
+                    d.dataset.row = r;
+                    d.dataset.col = c;
+                    d.onmousedown = wordStartSelect;
+                    d.onmouseover = wordMoveSelect;
+                    d.onmouseup = wordEndSelect;
+                    grid.appendChild(d);
+                }
+            }
+        }
+
+        function wordDrawWords() {
+            let box = document.getElementById('word-list');
+            box.innerHTML = '';
+            wordWords.forEach(w => {
+                let div = document.createElement('div');
+                div.className = 'word-tag';
+                div.id = 'w_' + w;
+                div.innerHTML = w;
+                box.appendChild(div);
+            });
+        }
+
+        function wordStartSelect() {
+            wordSelecting = true;
+            wordClearSelection();
+            this.classList.add('selected');
+            wordSelected = [this];
+        }
+
+        function wordMoveSelect() {
+            if (!wordSelecting || wordSelected.includes(this)) return;
+            this.classList.add('selected');
+            wordSelected.push(this);
+        }
+
+        function wordEndSelect() {
+            wordSelecting = false;
+            let word = wordSelected.map(x => x.innerHTML).join('');
+            let reverse = word.split('').reverse().join('');
+            if (wordWords.includes(word)) {
+                wordFound(word);
+            } else if (wordWords.includes(reverse)) {
+                wordFound(reverse);
+            } else {
+                wordClearSelection();
+            }
+        }
+
+        function wordClearSelection() {
+            document.querySelectorAll('.cell.selected').forEach(x => x.classList.remove('selected'));
+            wordSelected = [];
+        }
+
+        function wordFound(word) {
+            wordSelected.forEach(c => {
+                c.classList.remove('selected');
+                c.classList.add('found');
+            });
+            document.getElementById('w_' + word).classList.add('done');
+            wordScore += 100;
+            document.getElementById('word-score').innerHTML = wordScore;
+            if (wordScore > (localStorage.getItem('wordHigh') || 0)) {
+                localStorage.setItem('wordHigh', wordScore);
+            }
+            document.getElementById('word-highscore').innerHTML = localStorage.getItem('wordHigh') || 0;
+            if (document.querySelectorAll('.word-tag.done').length === wordWords.length) {
+                clearInterval(wordInterval);
+                showToast('🎉 All words found! Great job!');
+            }
+            wordSelected = [];
+        }
+
+        function wordStart() {
+            clearInterval(wordInterval);
+            wordTimer = 300;
+            wordScore = 0;
+            document.getElementById('word-timer').innerHTML = 300;
+            document.getElementById('word-score').innerHTML = 0;
+            emptyBoard();
+            chooseRandomWords();
+            wordWords.forEach(placeWord);
+            fillLetters();
+            wordDraw();
+            wordDrawWords();
+            wordInterval = setInterval(() => {
+                wordTimer--;
+                document.getElementById('word-timer').innerHTML = wordTimer;
+                if (wordTimer <= 0) {
+                    clearInterval(wordInterval);
+                    document.querySelectorAll('.cell').forEach(c => c.style.pointerEvents = 'none');
+                    showToast('⏰ Time Over!');
+                }
+            }, 1000);
+        }
+
+        function wordRestart() {
+            wordStart();
+        }
+
+        // ===== PUZZLE GAME =====
+        let puzzleBoard = [], puzzleMoves = 0, puzzleTime = 0, puzzleInterval;
+
+        function solvableShuffle() {
+            puzzleBoard = [...Array(35).keys()].map(x => x + 1);
+            puzzleBoard.push(0);
+            for (let i = 0; i < 500; i++) {
+                let e = puzzleBoard.indexOf(0), r = Math.floor(e / 6), c = e % 6;
+                let n = [];
+                if (r > 0) n.push(e - 6);
+                if (r < 5) n.push(e + 6);
+                if (c > 0) n.push(e - 1);
+                if (c < 5) n.push(e + 1);
+                let s = n[Math.floor(Math.random() * n.length)];
+                [puzzleBoard[e], puzzleBoard[s]] = [puzzleBoard[s], puzzleBoard[e]];
+            }
+        }
+
+        function puzzleDraw() {
+            const bd = document.getElementById('puzzle-board');
+            bd.innerHTML = '';
+            puzzleBoard.forEach((v, i) => {
+                let d = document.createElement('div');
+                d.className = 'tile' + (v === 0 ? ' empty' : '');
+                d.textContent = v || '';
+                d.onclick = () => puzzleMove(i);
+                bd.appendChild(d);
+            });
+            document.getElementById('puzzle-moves').textContent = puzzleMoves;
+        }
+
+        function puzzleMove(i) {
+            let e = puzzleBoard.indexOf(0);
+            let ok = [e - 6, e + 6, (e % 6 ? e - 1 : -1), (e % 6 < 5 ? e + 1 : -1)].includes(i);
+            if (!ok) return;
+            [puzzleBoard[e], puzzleBoard[i]] = [puzzleBoard[i], puzzleBoard[e]];
+            puzzleMoves++;
+            puzzleDraw();
+            if (puzzleWin()) {
+                clearInterval(puzzleInterval);
+                showToast(`🎉 Solved in ${puzzleMoves} moves and ${puzzleTime}s!`);
+            }
+        }
+
+        function puzzleWin() {
+            for (let i = 0; i < 35; i++) if (puzzleBoard[i] !== i + 1) return false;
+            return puzzleBoard[35] === 0;
+        }
+
+        function puzzleNewGame() {
+            clearInterval(puzzleInterval);
+            puzzleMoves = 0;
+            puzzleTime = 0;
+            document.getElementById('puzzle-time').textContent = 0;
+            solvableShuffle();
+            puzzleDraw();
+            puzzleInterval = setInterval(() => {
+                puzzleTime++;
+                document.getElementById('puzzle-time').textContent = puzzleTime;
+            }, 1000);
+        }
+
+        // ===== QUIZ GAME =====
+        const quizQuestionsBank = [
+            { question: 'What is the capital of India?', answers: [{ text: 'Mumbai', correct: false }, { text: 'New Delhi', correct: true }, { text: 'Jaipur', correct: false }, { text: 'Chennai', correct: false }] },
+            { question: '5 × 6 = ?', answers: [{ text: '30', correct: true }, { text: '25', correct: false }, { text: '35', correct: false }, { text: '40', correct: false }] },
+            { question: 'Which planet is known as the Red Planet?', answers: [{ text: 'Earth', correct: false }, { text: 'Mars', correct: true }, { text: 'Venus', correct: false }, { text: 'Jupiter', correct: false }] },
+            { question: 'HTML stands for?', answers: [{ text: 'Hyper Text Markup Language', correct: true }, { text: 'High Text Machine Language', correct: false }, { text: 'Hyper Tool Multi Language', correct: false }, { text: 'Home Text Markup Language', correct: false }] },
+            { question: 'Which animal is called the King of the Jungle?', answers: [{ text: 'Tiger', correct: false }, { text: 'Lion', correct: true }, { text: 'Elephant', correct: false }, { text: 'Leopard', correct: false }] },
+            { question: 'What is the largest ocean on Earth?', answers: [{ text: 'Atlantic Ocean', correct: false }, { text: 'Indian Ocean', correct: false }, { text: 'Pacific Ocean', correct: true }, { text: 'Arctic Ocean', correct: false }] },
+            { question: 'Which country has the most population?', answers: [{ text: 'India', correct: true }, { text: 'China', correct: false }, { text: 'USA', correct: false }, { text: 'Indonesia', correct: false }] },
+            { question: 'What is 12 + 8?', answers: [{ text: '18', correct: false }, { text: '20', correct: true }, { text: '22', correct: false }, { text: '25', correct: false }] },
+            { question: 'Which is the smallest prime number?', answers: [{ text: '1', correct: false }, { text: '2', correct: true }, { text: '3', correct: false }, { text: '5', correct: false }] },
+            { question: 'What is the chemical symbol for Gold?', answers: [{ text: 'Go', correct: false }, { text: 'Gd', correct: false }, { text: 'Au', correct: true }, { text: 'Ag', correct: false }] },
+            { question: 'Which is the tallest mountain in the world?', answers: [{ text: 'K2', correct: false }, { text: 'Mount Everest', correct: true }, { text: 'Kangchenjunga', correct: false }, { text: 'Lhotse', correct: false }] },
+            { question: 'How many continents are there?', answers: [{ text: '5', correct: false }, { text: '6', correct: false }, { text: '7', correct: true }, { text: '8', correct: false }] },
+            { question: 'What is the capital of France?', answers: [{ text: 'Lyon', correct: false }, { text: 'Paris', correct: true }, { text: 'Marseille', correct: false }, { text: 'Nice', correct: false }] },
+            { question: 'Which gas do plants absorb from the atmosphere?', answers: [{ text: 'Oxygen', correct: false }, { text: 'Nitrogen', correct: false }, { text: 'Carbon Dioxide', correct: true }, { text: 'Hydrogen', correct: false }] },
+            { question: 'What is the speed of light?', answers: [{ text: '100,000 km/s', correct: false }, { text: '300,000 km/s', correct: true }, { text: '500,000 km/s', correct: false }, { text: '150,000 km/s', correct: false }] }
+        ];
+
+        let quizQuestions = [], quizCurrentIndex = 0, quizScore = 0, quizTimeLeft = 15, quizTimer;
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function quizStart() {
+            quizQuestions = shuffleArray(quizQuestionsBank).slice(0, 5);
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-next').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'none';
+            quizShowQuestion();
+        }
+
+        function quizShowQuestion() {
+            quizResetState();
+            let currentQuestion = quizQuestions[quizCurrentIndex];
+            const progressPercent = (quizCurrentIndex / quizQuestions.length) * 100;
+            document.getElementById('quiz-progress').style.width = progressPercent + '%';
+            document.getElementById('quiz-question').innerHTML = (quizCurrentIndex + 1) + '. ' + currentQuestion.question;
+
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+            currentQuestion.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.className = 'option-button';
+                button.innerHTML = answer.text;
+                if (answer.correct) button.dataset.correct = 'true';
+                button.onclick = () => quizSelectAnswer(button, answer.correct);
+                optionsDiv.appendChild(button);
+            });
+
+            quizStartTimer();
+        }
+
+        function quizResetState() {
+            clearInterval(quizTimer);
+            quizTimeLeft = 15;
+            document.getElementById('quiz-timer').innerHTML = quizTimeLeft;
+            document.getElementById('quiz-next').style.display = 'none';
+        }
+
+        function quizStartTimer() {
+            quizTimer = setInterval(() => {
+                quizTimeLeft--;
+                document.getElementById('quiz-timer').innerHTML = quizTimeLeft;
+                if (quizTimeLeft <= 0) {
+                    clearInterval(quizTimer);
+                    document.getElementById('quiz-next').style.display = 'block';
+                }
+            }, 1000);
+        }
+
+        function quizSelectAnswer(btn, correct) {
+            clearInterval(quizTimer);
+            if (correct) {
+                quizScore++;
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('incorrect');
+            }
+            document.querySelectorAll('.option-button').forEach(b => {
+                if (b.dataset.correct === 'true') b.classList.add('correct');
+                b.disabled = true;
+            });
+            document.getElementById('quiz-next').style.display = 'block';
+        }
+
+        function quizNext() {
+            quizCurrentIndex++;
+            if (quizCurrentIndex < quizQuestions.length) {
+                quizShowQuestion();
+            } else {
+                quizShowScore();
+            }
+        }
+
+        function quizShowScore() {
+            quizResetState();
+            document.getElementById('quiz-question').innerHTML = 'Quiz Completed!';
+            document.getElementById('quiz-options').innerHTML = '';
+            document.getElementById('quiz-progress').style.width = '100%';
+            
+            const percentage = Math.round(quizScore / quizQuestions.length * 100);
+            const result = document.getElementById('quiz-result');
+            result.style.display = 'block';
+            
+            let grade = '🌟';
+            if (percentage >= 80) grade = '🏆';
+            else if (percentage >= 60) grade = '⭐';
+            else if (percentage < 40) grade = '💪';
+            
+            result.innerHTML = `<h3>${grade} ${quizScore} / ${quizQuestions.length}</h3>
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <div class="result-stat-label">Score</div>
+                        <div class="result-stat-value">${percentage}%</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-label">Correct</div>
+                        <div class="result-stat-value">${quizScore}</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-stat-label">Wrong</div>
+                        <div class="result-stat-value">${quizQuestions.length - quizScore}</div>
+                    </div>
+                </div>`;
+            
+            document.getElementById('quiz-next').innerHTML = 'Play Again';
+            document.getElementById('quiz-next').style.display = 'block';
+            document.getElementById('quiz-next').onclick = () => {
+                quizQuestions = shuffleArray(quizQuestionsBank).slice(0, 5);
+                quizStart();
+            };
+        }
+
+        // ===== QUIZ BUILDER =====
+        let builderQuestions = [], builderOrder = [], builderIndex = 0, builderCorrect = 0, builderWrong = 0, builderTimeout = 0, builderSec = 10, builderIntv;
+
+        function builderAddQuestion() {
+            let q = document.getElementById('builder-question').value.trim();
+            let a = document.getElementById('builder-answer').value.trim();
+            if (!q || !a) {
+                showToast('⚠️ Please enter both question and answer!');
+                return;
+            }
+            builderQuestions.push({ q, a });
+            document.getElementById('builder-question').value = '';
+            document.getElementById('builder-answer').value = '';
+            builderDisplayQuestions();
+            showToast('✅ Question added successfully!');
+        }
+
+        function builderDisplayQuestions() {
+            let list = document.getElementById('builder-list');
+            list.innerHTML = '';
+            builderQuestions.forEach((item, idx) => {
+                let div = document.createElement('div');
+                div.className = 'question-item';
+                div.innerHTML = `<div class="question-item-text"><span class="question-item-number">${idx + 1}.</span> ${item.q}</div><button class="remove-btn" onclick="builderRemoveQuestion(${idx})">Remove</button>`;
+                list.appendChild(div);
+            });
+        }
+
+        function builderRemoveQuestion(idx) {
+            builderQuestions.splice(idx, 1);
+            builderDisplayQuestions();
+        }
+
+        function builderStart() {
+            if (builderQuestions.length === 0) {
+                showToast('⚠️ Add at least one question first!');
+                return;
+            }
+            builderSec = parseInt(document.getElementById('builder-timer').value);
+            builderOrder = [...builderQuestions].sort(() => Math.random() - 0.5);
+            builderIndex = 0;
+            builderCorrect = builderWrong = builderTimeout = 0;
+            document.getElementById('builder-question').style.display = 'none';
+            document.getElementById('builder-answer').style.display = 'none';
+            document.querySelectorAll('.form-group label').forEach(l => l.style.display = 'none');
+            document.querySelectorAll('.form-group input').forEach(i => i.style.display = 'none');
+            document.querySelector('button[onclick="builderAddQuestion()"]').style.display = 'none';
+            document.getElementById('builder-list').style.display = 'none';
+            document.querySelector('button[onclick="builderStart()"]').style.display = 'none';
+            document.getElementById('builder-play').style.display = 'block';
+            builderNext();
+        }
+
+        function builderNext() {
+            if (builderIndex >= builderOrder.length) {
+                document.getElementById('builder-play').style.display = 'none';
+                let pct = Math.round(builderCorrect / builderOrder.length * 100);
+                let grade = pct >= 80 ? '🏆' : pct >= 60 ? '⭐' : '💪';
+                document.getElementById('builder-result').innerHTML = `<div class="quiz-result"><h3>${grade} Quiz Finished!</h3>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-label">Correct</div>
+                            <div class="result-stat-value">${builderCorrect}</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-label">Wrong</div>
+                            <div class="result-stat-value">${builderWrong}</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-label">Timeout</div>
+                            <div class="result-stat-value">${builderTimeout}</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-label">Score</div>
+                            <div class="result-stat-value">${pct}%</div>
+                        </div>
+                    </div></div>`;
+                return;
+            }
+            clearInterval(builderIntv);
+            let left = builderSec;
+            document.getElementById('builder-progress').textContent = builderIndex + 1;
+            document.getElementById('builder-total').textContent = builderOrder.length;
+            document.getElementById('builder-ques').textContent = builderOrder[builderIndex].q;
+            document.getElementById('builder-ans').value = '';
+            document.getElementById('builder-ans').focus();
+            builderIntv = setInterval(() => {
+                left--;
+                if (left <= 0) {
+                    clearInterval(builderIntv);
+                    builderTimeout++;
+                    builderIndex++;
+                    builderNext();
+                }
+            }, 1000);
+        }
+
+        function builderSubmitAnswer() {
+            clearInterval(builderIntv);
+            let u = document.getElementById('builder-ans').value.trim().toLowerCase();
+            let a = builderOrder[builderIndex].a.trim().toLowerCase();
+            if (u === a) {
+                builderCorrect++;
+                showToast('✅ Correct!');
+            } else {
+                builderWrong++;
+                showToast(`❌ Wrong! Answer was: ${builderOrder[builderIndex].a}`);
+            }
+            builderIndex++;
+            builderNext();
+        }
+
+        function builderInit() {
+            builderQuestions = [];
+            builderDisplayQuestions();
+            document.getElementById('builder-play').style.display = 'none';
+            document.getElementById('builder-result').innerHTML = '';
+            document.getElementById('builder-question').style.display = 'block';
+            document.getElementById('builder-answer').style.display = 'block';
+            document.querySelectorAll('.form-group label').forEach(l => l.style.display = 'block');
+            document.querySelectorAll('.form-group input').forEach(i => i.style.display = 'block');
+            document.querySelector('button[onclick="builderAddQuestion()"]').style.display = 'block';
+            document.getElementById('builder-list').style.display = 'block';
+            document.querySelector('button[onclick="builderStart()"]').style.display = 'block';
+        }
+
+        // ===== TOAST NOTIFICATIONS =====
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'toastSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) reverse';
+                setTimeout(() => toast.remove(), 400);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
